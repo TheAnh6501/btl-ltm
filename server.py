@@ -7,7 +7,7 @@ def generate_random_item():
 
 
 def handle_client(client_socket):
-    request = client_socket.recv(1024).decode()
+    request = client_socket.recv(1024).decode() #Nhận và phân tích dữ liệu
     if request == 'generate_item':
         item = generate_random_item()
         client_socket.send(item.encode())
@@ -17,8 +17,8 @@ def handle_client(client_socket):
     client_socket.close()
 
 def main():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8888))
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #Ipv4 và giao thức TCP
+    server_socket.bind(('localhost', 8888)) # vì client và server hiện tại chạy trên cùng 1 máy, kết nối tới localhost
     server_socket.listen(5)
     print("Server is listening...")
 
